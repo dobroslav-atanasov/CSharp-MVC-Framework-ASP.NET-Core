@@ -7,15 +7,15 @@
 SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with their solutions.
 
 ## Course content:
-- HTML and CSS
-- Web Server
-	- HTTP Protocol
-	- Asynchonous Processing
-	- State Management
-	- Databases - Entity Framework Core
-- Introduction to MVC
-- Advanced MVC Framework - IOC, Data Binding, Auto-Mapping
-- Advanced MVC Framework - Extending MVC Framework
+- ASP.NET Core Introduction
+- Basics and Razor Pages
+- Razor Pages Architecture
+- MVC Architecture Components
+- Filters
+- Identity
+- Architecture
+- Unit Testing
+- ASP.NET WebApi
 
 ## Repository content:
 
