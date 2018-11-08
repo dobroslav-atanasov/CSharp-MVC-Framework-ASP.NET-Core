@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FDMC
 {
+    using Data;
+    using Microsoft.EntityFrameworkCore;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -33,6 +36,10 @@ namespace FDMC
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var connection = @"Server=RUMELA-PC\SQLEXPRESS;Database=FDMCDb;Integrated Security=True;Trusted_Connection=True;";
+            services.AddDbContext<FDMCDbContext>
+                (options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
