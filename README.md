@@ -8,7 +8,6 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 
 ## Course content:
 - ASP.NET Core Introduction
-- Basics and Razor Pages
 - Razor Pages Architecture
 - MVC Architecture Components
 - Filters
@@ -16,6 +15,7 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 - Architecture
 - Unit Testing
 - ASP.NET WebApi
+- ASP.NET Singalr
 
 ## Repository content:
 
@@ -23,4 +23,4 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 
 №	|Tasks												|Descriptions																										|Exercises																																	|Progress																														
 :--:|---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:---------------:
-1	|								|[Description]			|[Exercises]								|![Progress](http://progressed.io/bar/100?title=completed)
+1	|Introduction to ASP.NET Core						|[Description](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Resources)		|[Exercises](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/FDMC)										|![Progress](http://progressed.io/bar/20)
