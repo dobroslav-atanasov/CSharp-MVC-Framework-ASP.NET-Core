@@ -1,0 +1,25 @@
+﻿@model Fdmc.ViewModels.CatViewModels.AllCatsViewModel
+
+@{
+    ViewData["Title"] = "Fluffy Duffy Munchkin Cats";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Cats.Any())
+{
+    <div>
+        @foreach (var cat in Model.Cats)
+        {
+            <div>
+                <a href="/cat/details/@cat.Id" class="btn btn-warning">@cat.Name</a>
+            </div>
+        }
+    </div>
+    <hr />
+}
+
+
+<div>
+    <a href="/Cat/Add" class="btn btn-primary" role="button">Add Cat</a>
+</div>

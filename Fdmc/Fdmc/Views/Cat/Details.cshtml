@@ -1,0 +1,16 @@
+﻿@model Fdmc.ViewModels.CatViewModels.DetailsCatViewModel
+
+@{
+    ViewData["Title"] = "Cat Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr/>
+
+<h3>@Model.Name</h3>
+
+<img src="@Model.Url" alt="@Model.Name" width="300" height="300"/>
+
+<h4>Age: @Model.Age</h4>
+<h4>Breed: @Model.Breed</h4>

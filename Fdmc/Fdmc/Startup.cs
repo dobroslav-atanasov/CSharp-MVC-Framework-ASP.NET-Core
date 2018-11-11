@@ -14,6 +14,8 @@ namespace Fdmc
 {
     using Data;
     using Microsoft.EntityFrameworkCore;
+    using Services;
+    using Services.Interfaces;
 
     public class Startup
     {
@@ -40,6 +42,8 @@ namespace Fdmc
             var connection = @"Server=RUMELA-PC\SQLEXPRESS;Database=FdmcDb;Integrated Security=True;Trusted_Connection=True;";
             services.AddDbContext<FdmcDbContext>
                 (options => options.UseSqlServer(connection));
+
+            services.AddTransient<ICatService, CatService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +63,10 @@ namespace Fdmc
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}"));
+
         }
     }
 }
