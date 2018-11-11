@@ -8,7 +8,7 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 
 ## Course content:
 - ASP.NET Core Introduction
-- Razor Pages Architecture
+- Razor: Views and Layouts
 - MVC Architecture Components
 - Filters
 - Identity
