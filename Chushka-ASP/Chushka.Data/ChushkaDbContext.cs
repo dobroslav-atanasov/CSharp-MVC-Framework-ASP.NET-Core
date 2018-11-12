@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Models;
 
-    public class ChushkaDbContext : IdentityDbContext<User>
+    public class ChushkaDbContext : DbContext
     {
         public ChushkaDbContext()
         {
