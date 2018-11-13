@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chushka.Web", "Chushka.Web\Chushka.Web.csproj", "{F874AF1C-AEBC-4962-9F1B-C45BBB879EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chushka.Web", "Chushka.Web\Chushka.Web.csproj", "{F874AF1C-AEBC-4962-9F1B-C45BBB879EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chushka.Data", "Chushka.Data\Chushka.Data.csproj", "{C7CCB651-3726-4661-B010-1867A12A3A44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chushka.Data", "Chushka.Data\Chushka.Data.csproj", "{C7CCB651-3726-4661-B010-1867A12A3A44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chushka.Models", "Chushka.Models\Chushka.Models.csproj", "{8B55DDC2-1E2B-4AFD-872A-037A0EA13847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chushka.Models", "Chushka.Models\Chushka.Models.csproj", "{8B55DDC2-1E2B-4AFD-872A-037A0EA13847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chushka.Services", "Chushka.Services\Chushka.Services.csproj", "{514C01B2-69F0-451F-B8C3-6C65D14B9184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chushka.Services", "Chushka.Services\Chushka.Services.csproj", "{514C01B2-69F0-451F-B8C3-6C65D14B9184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chushka.Common", "Chushka.Common\Chushka.Common.csproj", "{94B5104B-C642-4517-A4EB-E370E7CE1AF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{514C01B2-69F0-451F-B8C3-6C65D14B9184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{514C01B2-69F0-451F-B8C3-6C65D14B9184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{514C01B2-69F0-451F-B8C3-6C65D14B9184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B5104B-C642-4517-A4EB-E370E7CE1AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B5104B-C642-4517-A4EB-E370E7CE1AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B5104B-C642-4517-A4EB-E370E7CE1AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B5104B-C642-4517-A4EB-E370E7CE1AF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

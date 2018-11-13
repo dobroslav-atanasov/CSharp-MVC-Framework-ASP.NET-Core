@@ -14,6 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Chushka.Web
 {
+    using Chushka.Models;
+    using Common;
+    using Controllers;
     using Data;
 
     public class Startup
@@ -36,27 +39,29 @@ namespace Chushka.Web
             });
 
             services.AddDbContext<ChushkaDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<ChushkaDbContext>();
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.Configure<IdentityOptions>(options =>
             {
                 options.SignIn.RequireConfirmedEmail = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequiredLength = 3;
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ChushkaDbContext>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -68,6 +73,9 @@ namespace Chushka.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            // Method for seed roles.
+            SeedRoles.Seed(serviceProvider);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
