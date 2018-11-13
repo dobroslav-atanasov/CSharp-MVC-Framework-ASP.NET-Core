@@ -1,25 +1,61 @@
+@using Chushka.Models
 @using Microsoft.AspNetCore.Identity
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-            </li>
-        </ul>
-    </form>
+    if (User.IsInRole("Admin"))
+    {
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+            <ul class="navbar-nav right-side">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" href="/products/create">Create Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" href="/orders/all">All Orders</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav left-side">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    }
+    else if (User.IsInRole("User"))
+    {
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+            <ul class="navbar-nav right-side">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" href="/">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav left-side">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-    </ul>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link nav-link-white" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Register">Register</a>
+            </li>
+        </ul>
+    </div>
 }

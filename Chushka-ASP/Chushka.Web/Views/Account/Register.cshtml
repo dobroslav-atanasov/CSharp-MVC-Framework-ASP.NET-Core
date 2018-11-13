@@ -1,29 +1,31 @@
-﻿@{
+﻿@model Chushka.Web.ViewModels.Account.RegisterViewModel
+
+@{
     ViewData["Title"] = "Register";
 }
 
 <h1 class="text-center">Register</h1>
 <hr class="bg-secondary half-width"/>
-<form class="mx-auto half-width" method="post" action="/users/login">
+<form class="mx-auto half-width" method="post" asp-controller="Account" asp-action="Register">
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Username..." name="username">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" placeholder="Username..." />
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password..." name="password">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" placeholder="Password..." />
     </div>
     <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password..." name="confirmPassword">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
     </div>
     <div class="form-group">
-        <label for="fullName">Full name</label>
-        <input type="text" class="form-control" id="fullName" placeholder="Full Name..." name="fullName">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" placeholder="Full Name..." />
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Email..." name="email">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" placeholder="Email..." />
     </div>
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn chushka-bg-color">Register</button>
