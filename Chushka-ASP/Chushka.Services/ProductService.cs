@@ -4,8 +4,9 @@
     using System.Linq;
     using Contracts;
     using Data;
+    using Microsoft.EntityFrameworkCore;
     using Models;
-    using ProductType = Models.Enums.ProductType;
+    using Models.Enums;
 
     public class ProductService : IProductService
     {
@@ -74,6 +75,17 @@
             product.IsDeleted = true;
 
             this.context.SaveChanges();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            var orders = this.context.Orders
+                .Where(o => o.IsDeleted == false)
+                .Include(o => o.Product)
+                .Include(o => o.Client)
+                .ToList();
+
+            return orders;
         }
     }
 }

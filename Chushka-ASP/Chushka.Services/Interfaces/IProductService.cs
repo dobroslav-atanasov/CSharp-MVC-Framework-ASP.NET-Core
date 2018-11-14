@@ -17,5 +17,7 @@
         void EditProduct(int productId, string name, decimal price, string description, ProductType type);
 
         void DeleteProduct(int productId);
+
+        List<Order> GetAllOrders();
     }
 }
