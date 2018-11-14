@@ -1,6 +1,6 @@
 ﻿namespace Chushka.Models.Enums
 {
-    public enum Type
+    public enum ProductType
     {
         Food = 1,
         Domestic = 2,
