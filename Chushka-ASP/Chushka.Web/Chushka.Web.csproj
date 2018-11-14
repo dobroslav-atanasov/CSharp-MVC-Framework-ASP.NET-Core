@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Chushka.Services\Chushka.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
-  </ItemGroup>
-
 </Project>

@@ -1,10 +1,54 @@
-﻿@{
+﻿@using Chushka.Models
+@using Microsoft.AspNetCore.Identity
+
+@model Chushka.Web.ViewModels.Product.ProductsViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="jumbotron mt-3 chushka-bg-color">
-    <h1>Welcome to Chushka Universal Web Shop</h1>
-    <hr class="bg-white" />
-    <h3><a asp-controller="Account" asp-action="Login" class="nav-link-dark">Login</a> if you have an account.</h3>
-    <h3><a asp-controller="Account" asp-action="Register" class="nav-link-dark">Register</a> if you don't.</h3>
-</div>
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container-fluid text-center">
+        @if (User.IsInRole("Admin"))
+        {
+            <h2>Greetings, admin!</h2>
+            <h4>Enjoy your work today!</h4>
+        }
+        else if (User.IsInRole("User"))
+        {
+            <h2>Greetings, @User.Identity.Name!</h2>
+            <h4>Feel free to view and order any of our products.</h4>
+        }
+    </div>
+    <div class="container-fluid product-holder">
+        <div class="row d-flex justify-content-around mt-4">
+            <hr class="hr-2 bg-dark" />
+            @foreach (var product in @Model.Products)
+            {
+                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="col-md-2">
+                    <div class="product p-1 chushka-bg-color rounded-top rounded-bottom">
+                        <h5 class="text-center mt-3">@product.Name</h5>
+                        <hr class="hr-1 bg-white"/>
+                        <p class="text-white text-center">
+                            @product.Description
+                        </p>
+                        <hr class="hr-1 bg-white"/>
+                        <h6 class="text-center text-white mb-3">$@product.Price</h6>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="jumbotron mt-3 chushka-bg-color">
+        <h1>Welcome to Chushka Universal Web Shop</h1>
+        <hr class="bg-white" />
+        <h3><a asp-controller="Account" asp-action="Login" class="nav-link-dark">Login</a> if you have an account.</h3>
+        <h3><a asp-controller="Account" asp-action="Register" class="nav-link-dark">Register</a> if you don't.</h3>
+    </div>
+}

@@ -1,12 +1,15 @@
 ﻿namespace Chushka.Web.Controllers
 {
     using System;
+    using System.Globalization;
+    using System.Linq;
     using Chushka.Models;
     using Chushka.Models.Enums;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Services.Contracts;
+    using ViewModels.Order;
     using ViewModels.Product;
 
     public class ProductController : Controller
@@ -19,7 +22,7 @@
             this.productService = productService;
             this.userManager = userManager;
         }
-        
+
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -101,6 +104,27 @@
         {
             this.productService.DeleteProduct(model.Id);
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult All()
+        {
+            var orders = this.productService.GetAllOrders();
+            var allOrders = new AllOrdersViewModel
+            {
+                AllOrders = orders
+                    .Select(o => new OrderViewModel
+                    {
+                        Id = o.Id,
+                        Customer = o.Client.UserName,
+                        Product = o.Product.Name,
+                        OrderedOn = o.OrderedOn.ToString("hh:mm dd/MM/yyyy", CultureInfo.InvariantCulture)
+                    })
+                    .ToList()
+            };
+
+
+            return this.View(allOrders);
         }
     }
 }
