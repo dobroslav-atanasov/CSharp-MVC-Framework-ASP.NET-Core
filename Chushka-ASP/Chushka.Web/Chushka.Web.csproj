@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Chushka.Common\Chushka.Common.csproj" />
     <ProjectReference Include="..\Chushka.Data\Chushka.Data.csproj" />
+    <ProjectReference Include="..\Chushka.Services\Chushka.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,52 @@
+﻿@model Chushka.Web.ViewModels.Product.DetailsViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center">Delete Product</h1>
+<hr class="hr-2 bg-dark" />
+<form class="mx-auto half-width" method="post" asp-action="Delete">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Name..." value="@Model.Name" disabled/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" placeholder="Price..." value="@Model.Price" disabled/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" placeholder="Description..." disabled>@Model.Description</textarea>
+    </div>
+    <h4 class="text-center">Product Type</h4>
+    <hr class="hr-2 bg-dark half-width mt-4" />
+    <div class="product-type-holder mt-4 d-flex justify-content-around">
+        <div class="form-check form-check-inline">
+            <input asp-for="Type" type="radio" name="Type" value="Food" class="form-check-input" disabled/>
+            <label asp-for="Type" class="form-check-label">Food</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Type" type="radio" name="Type" value="Domestic" class="form-check-input" disabled/>
+            <label asp-for="Type" class="form-check-label">Domestic</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Type" type="radio" name="Type" value="Health" class="form-check-input" disabled/>
+            <label asp-for="Type" class="form-check-label">Health</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Type" type="radio" name="Type" value="Cosmetic" class="form-check-input" disabled/>
+            <label asp-for="Type" class="form-check-label">Cosmetic</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Type" type="radio" name="Type" value="Other" class="form-check-input" disabled/>
+            <label asp-for="Type" class="form-check-label">Other</label>
+        </div>
+    </div>
+    <hr class="hr-2 bg-dark half-width mt-4" />
+    <div class="button-holder mt-2 d-flex w-25 mx-auto justify-content-between">
+        <button type="submit" class="btn chushka-bg-color">Delete</button>
+        <a asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id" class="btn chushka-bg-color">Cancel</a>
+    </div>
+</form>
+

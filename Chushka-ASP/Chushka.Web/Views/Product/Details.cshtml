@@ -1,0 +1,33 @@
+﻿@model Chushka.Web.ViewModels.Product.DetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center">@Model.Name</h1>
+<hr class="hr-2 bg-dark" />
+<div class="product-type-holder half-width mx-auto d-flex justify-content-between">
+    <h3 class="text-center">Type: @Model.Type.ToString()</h3>
+    <h3 class="text-center">Price: $@Model.Price</h3>
+</div>
+<hr class="hr-2 bg-dark" />
+<h3 class="text-center">Description</h3>
+<div class="product-description-holder">
+    <p class="text-center mt-4">
+        @Model.Description
+    </p>
+</div>
+<hr class="hr-2 bg-dark" />
+<h3 class="text-center">Actions</h3>
+<div class="product-action-holder mt-4 d-flex justify-content-around">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Product" asp-action="Order" asp-route-id="@Model.Id" class="btn chushka-bg-color">Order</a>
+        <a asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id" class="btn chushka-bg-color">Edit</a>
+        <a asp-controller="Product" asp-action="Delete" asp-route-id="@Model.Id" class="btn chushka-bg-color">Delete</a>
+    }
+    else
+    {
+        <a asp-controller="Product" asp-action="Order" asp-route-id="@Model.Id" class="btn chushka-bg-color">Order</a>
+    }
+</div>

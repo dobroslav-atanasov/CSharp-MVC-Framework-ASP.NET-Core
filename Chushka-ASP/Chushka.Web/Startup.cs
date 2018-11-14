@@ -18,6 +18,8 @@ namespace Chushka.Web
     using Common;
     using Controllers;
     using Data;
+    using Services;
+    using Services.Contracts;
 
     public class Startup
     {
@@ -40,6 +42,8 @@ namespace Chushka.Web
 
             services.AddDbContext<ChushkaDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
