@@ -6,15 +6,15 @@
 
     public interface IProductService
     {
-        void AddProduct(string name, decimal price, string description, Type type);
+        void CreateProduct(string name, decimal price, string description, ProductType type);
 
         List<Product> GetAllProducts();
 
-        Product GetProductById(int productId);
+        Product GetProductById(int id);
 
-        void ProductOrder(int productId, int userId);
+        void ProductOrder(int productId, string userId);
 
-        void EditProduct(int productId, string name, decimal price, string description, Type type);
+        void EditProduct(int productId, string name, decimal price, string description, ProductType type);
 
         void DeleteProduct(int productId);
     }

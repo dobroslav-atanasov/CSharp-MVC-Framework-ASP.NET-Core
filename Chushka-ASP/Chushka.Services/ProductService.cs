@@ -5,7 +5,7 @@
     using Contracts;
     using Data;
     using Models;
-    using Type = Models.Enums.Type;
+    using ProductType = Models.Enums.ProductType;
 
     public class ProductService : IProductService
     {
@@ -16,7 +16,7 @@
             this.context = context;
         }
 
-        public void AddProduct(string name, decimal price, string description, Type type)
+        public void CreateProduct(string name, decimal price, string description, ProductType type)
         {
             var product = new Product
             {
@@ -36,14 +36,14 @@
             return this.context.Products.Where(p => p.IsDeleted == false).ToList();
         }
 
-        public Product GetProductById(int productId)
+        public Product GetProductById(int id)
         {
-            var product = this.context.Products.FirstOrDefault(p => p.Id == productId);
+            var product = this.context.Products.FirstOrDefault(p => p.Id == id);
 
             return product;
         }
-
-        public void ProductOrder(int productId, int userId)
+        
+        public void ProductOrder(int productId, string userId)
         {
             var order = new Order
             {
@@ -55,7 +55,7 @@
             this.context.SaveChanges();
         }
 
-        public void EditProduct(int productId, string name, decimal price, string description, Type type)
+        public void EditProduct(int productId, string name, decimal price, string description, ProductType type)
         {
             var product = this.context.Products.FirstOrDefault(p => p.Id == productId);
 
