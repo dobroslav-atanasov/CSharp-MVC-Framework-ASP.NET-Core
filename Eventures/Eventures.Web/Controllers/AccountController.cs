@@ -28,16 +28,7 @@
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
-            //var user = new User
-            //{
-            //    UserName = model.Username,
-            //    Email = model.Email,
-            //    FirstName = model.FirstName,
-            //    LastName = model.LastName,
-            //    UniqueCitizenNumber = model.UniqueCitizenNumber
-            //};
-
-            var user = mapper.Map<User>(model);
+            var user = this.mapper.Map<User>(model);
 
             var result = this.userManager.CreateAsync(user, model.Password).Result;
             if (result.Succeeded)
@@ -58,8 +49,7 @@
                 //        return this.View();
                 //    }
                 //}
-
-                this.signInManager.SignInAsync(user, isPersistent: false);
+                this.signInManager.SignInAsync(user, false).Wait();
                 return this.RedirectToAction("Index", "Home");
             }
 
@@ -75,7 +65,7 @@
         public IActionResult Login(LoginViewModel model)
         {
             var user = this.userManager.Users.FirstOrDefault(u => u.UserName == model.Username);
-            var result = this.signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: true).Result;
+            var result = this.signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, true).Result;
             if (result.Succeeded)
             {
                 return this.RedirectToAction("Index", "Home");
