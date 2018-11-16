@@ -1,8 +1,8 @@
 ﻿namespace Eventures.Data
 {
-    using Eventures.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Models;
 
     public class EventuresDbContext : IdentityDbContext<User>
     {

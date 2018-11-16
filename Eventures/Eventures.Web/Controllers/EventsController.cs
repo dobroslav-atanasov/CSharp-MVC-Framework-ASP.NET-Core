@@ -1,9 +1,8 @@
-﻿using Eventures.Web.ViewModels.Events;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Eventures.Web.Controllers
+﻿namespace Eventures.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels.Events;
+
     public class EventsController : Controller
     {
         //[Authorize(Roles = "Admin")]

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Eventures.Models
+﻿namespace Eventures.Models
 {
+    using System;
+
     public class Event
     {
         public int Id { get; set; }
@@ -19,4 +19,3 @@ namespace Eventures.Models
         public decimal PricePerTicket { get; set; }
     }
 }
- 

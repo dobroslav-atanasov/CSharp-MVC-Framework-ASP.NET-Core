@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Eventures.Models
+﻿namespace Eventures.Models
 {
+    using Microsoft.AspNetCore.Identity;
+
     public class User : IdentityUser
     {
         public string FirstName { get; set; }

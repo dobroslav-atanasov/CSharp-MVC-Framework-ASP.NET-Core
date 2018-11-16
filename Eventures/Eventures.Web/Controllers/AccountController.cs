@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using Eventures.Models;
-using Eventures.Web.ViewModels.Account;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-
-namespace Eventures.Web.Controllers
+﻿namespace Eventures.Web.Controllers
 {
+    using System.Linq;
+    using AutoMapper;
+    using Eventures.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels.Account;
+
     public class AccountController : Controller
     {
         private readonly SignInManager<User> signInManager;

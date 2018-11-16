@@ -1,10 +1,10 @@
-﻿using System;
-using Eventures.Data;
-using Eventures.Models;
-using Eventures.Services.Interfaces;
-
-namespace Eventures.Services
+﻿namespace Eventures.Services
 {
+    using System;
+    using Data;
+    using Interfaces;
+    using Models;
+
     public class EventService : IEventsService
     {
         private readonly EventuresDbContext context;
