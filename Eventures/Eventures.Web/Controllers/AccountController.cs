@@ -29,20 +29,25 @@
         public IActionResult Register(RegisterViewModel model)
         {
             var user = this.mapper.Map<User>(model);
-
             var result = this.userManager.CreateAsync(user, model.Password).Result;
-            if (result.Succeeded)
+
+            if (this.userManager.Users.Count() == 1)
             {
-                if (!this.userManager.Users.Any())
+                this.signInManager.UserManager.AddToRoleAsync(user, "Admin");
+                if (result.Succeeded)
                 {
-                    this.userManager.AddToRoleAsync(user, "Admin");
+                    this.signInManager.SignInAsync(user, false).Wait();
+                    return this.RedirectToAction("Index", "Home");
                 }
-                else
+            }
+            else
+            {
+                this.signInManager.UserManager.AddToRoleAsync(user, "User");
+                if (result.Succeeded)
                 {
-                    this.userManager.AddToRoleAsync(user, "User");
+                    this.signInManager.SignInAsync(user, false).Wait();
+                    return this.RedirectToAction("Index", "Home");
                 }
-                this.signInManager.SignInAsync(user, false).Wait();
-                return this.RedirectToAction("Index", "Home");
             }
 
             return this.View();
