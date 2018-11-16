@@ -8,14 +8,17 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 
 ## Course content:
 - ASP.NET Core Introduction
+- ASP.NET Core MVC Introduction
 - Razor: Views and Layouts
-- MVC Architecture Components
-- Filters
-- Identity
+- Application Flow, Filters and Middleware
+- Working with Data
+- Security and Identity
 - Architecture
 - Unit Testing
-- ASP.NET WebApi
+- Deployment and CI
+- ASP.NET Core Web Api and JWT
 - ASP.NET Singalr
+- Blazor
 
 ## Repository content:
 
@@ -25,4 +28,4 @@ SoftUni course C# MVC Frameworks ASP.NET Core - November 2018: All tasks with th
 :--:|---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:---------------:
 1	|Introduction to ASP.NET Core						|[Description](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Resources)		|[Exercises](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Fdmc)										|![Progress](http://progressed.io/bar/100?title=completed)
 2	|Razor: Views and Layouts							|[Description](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Resources)		|[Exercises](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Chushka-ASP)								|![Progress](http://progressed.io/bar/100?title=completed)
-3	|Application Flow, Middleware and Filters			|[Description](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Resources)		|[Exercises](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Eventures)								|![Progress](http://progressed.io/bar/0)
+3	|Application Flow, Filters and Middleware			|[Description](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Resources)		|[Exercises](https://github.com/dobroslav-atanasov/CSharp-MVC-Frameworks-ASP.NET-Core/tree/master/Eventures)								|![Progress](http://progressed.io/bar/0)
