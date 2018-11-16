@@ -33,22 +33,14 @@
             var result = this.userManager.CreateAsync(user, model.Password).Result;
             if (result.Succeeded)
             {
-                //if (this.userManager.Users.Count() == 1)
-                //{
-                //    var roleResult = this.userManager.AddToRoleAsync(user, "Admin").Result;
-                //    if (roleResult.Errors.Any())
-                //    {
-                //        return this.View();
-                //    }
-                //}
-                //else
-                //{
-                //    var roleResult = this.userManager.AddToRoleAsync(user, "User").Result;
-                //    if (roleResult.Errors.Any())
-                //    {
-                //        return this.View();
-                //    }
-                //}
+                if (!this.userManager.Users.Any())
+                {
+                    this.userManager.AddToRoleAsync(user, "Admin");
+                }
+                else
+                {
+                    this.userManager.AddToRoleAsync(user, "User");
+                }
                 this.signInManager.SignInAsync(user, false).Wait();
                 return this.RedirectToAction("Index", "Home");
             }

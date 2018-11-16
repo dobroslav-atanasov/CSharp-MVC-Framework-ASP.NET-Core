@@ -32,13 +32,7 @@
 
         private async Task SeedRoles(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
-            var adminResult = roleManager.CreateAsync(new IdentityRole("Admin")).Result;
-            if (adminResult.Succeeded && userManager.Users.Any())
-            {
-                var firstUser = userManager.Users.FirstOrDefault();
-                await userManager.AddToRoleAsync(firstUser, "Admin");
-            }
-
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
             await roleManager.CreateAsync(new IdentityRole("User"));
         }
     }

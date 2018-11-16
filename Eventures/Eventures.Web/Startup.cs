@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Eventures.Data;
-using Eventures.Models;
-using Eventures.Services.Interfaces;
-using Eventures.Services;
-using AutoMapper;
-using Eventures.Web.Mapper;
-using Eventures.Web.Middlewares.Extensions;
-
-namespace Eventures.Web
+﻿namespace Eventures.Web
 {
+    using System;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Eventures.Data;
+    using Eventures.Models;
+    using Services.Interfaces;
+    using Eventures.Services;
+    using AutoMapper;
+    using Eventures.Web.Mapper;
+    using Middlewares.Extensions;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -84,13 +80,13 @@ namespace Eventures.Web
                 app.UseHsts();
             }
 
+            // Middleware for seed roles
+            app.UseSeedRoles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
-            //app.UseSeedRoles();
 
             app.UseMvc(routes =>
             {
