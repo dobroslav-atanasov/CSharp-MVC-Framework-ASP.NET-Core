@@ -12,13 +12,28 @@
                 <a class="navbar-brand text-dark font-weight-bold" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="nav-item">
-                <a class="navbar-brand text-dark font-weight-bold dropdown-menu" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navbar-brand text-dark font-weight-bold" asp-controller="Events" asp-action="All">All Events</a>
             </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="navbar-brand text-dark font-weight-bold" asp-controller="Events" asp-action="Create">Create Event</a>
+                </li>
+            }
         </ul>
         <ul class="navbar-nav left-side">
-            <li class="nav-item">
-                <span class="navbar-brand text-dark font-weight-bold">@User.Identity.Name</span>
-            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <span class="navbar-brand text-dark font-weight-bold">Hello Admin!</span>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <span class="navbar-brand text-dark font-weight-bold">Hello @User.Identity.Name!</span>
+                </li>
+            }
             <li class="nav-item">
                 <a class="navbar-brand text-dark font-weight-bold" asp-controller="Account" asp-action="Logout">Logout</a>
             </li>
