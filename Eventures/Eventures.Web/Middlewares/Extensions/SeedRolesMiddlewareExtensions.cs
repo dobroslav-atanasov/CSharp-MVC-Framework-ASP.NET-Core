@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace Eventures.Web.Middlewares.Extensions
+﻿namespace Eventures.Web.Middlewares.Extensions
 {
+    using Microsoft.AspNetCore.Builder;
+
     public static class SeedRolesMiddlewareExtensions
     {
         public static IApplicationBuilder UseSeedRoles(this IApplicationBuilder builder)

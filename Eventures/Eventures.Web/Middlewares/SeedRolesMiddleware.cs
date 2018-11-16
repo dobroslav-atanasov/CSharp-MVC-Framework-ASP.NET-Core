@@ -1,13 +1,14 @@
-﻿using Eventures.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Eventures.Web.Middlewares
+﻿namespace Eventures.Web.Middlewares
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Data;
+    using Eventures.Models;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.DependencyInjection;
+
     public class SeedRolesMiddleware
     {
         private readonly RequestDelegate next;
@@ -17,25 +18,28 @@ namespace Eventures.Web.Middlewares
             this.next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context, IServiceProvider serviceProvider)
+        public async Task InvokeAsync(HttpContext context, IServiceProvider serviceProvider, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
-            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
-            if (!roleManager.Roles.Any())
-            {
-                var adminRoleExists = roleManager.RoleExistsAsync("Admin").Result;
-                var userRoleExists = roleManager.RoleExistsAsync("User").Result;
-                if (!adminRoleExists)
-                {
-                    await roleManager.CreateAsync(new IdentityRole("Admin"));
-                }
+            var dbContext = serviceProvider.GetService<EventuresDbContext>();
 
-                if (!userRoleExists)
-                {
-                    await roleManager.CreateAsync(new IdentityRole("User"));
-                }
+            if (!dbContext.Roles.Any())
+            {
+                await this.SeedRoles(userManager, roleManager);
             }
 
-            await next(context);
+            await this.next(context);
+        }
+
+        private async Task SeedRoles(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            var adminResult = roleManager.CreateAsync(new IdentityRole("Admin")).Result;
+            if (adminResult.Succeeded && userManager.Users.Any())
+            {
+                var firstUser = userManager.Users.FirstOrDefault();
+                await userManager.AddToRoleAsync(firstUser, "Admin");
+            }
+
+            await roleManager.CreateAsync(new IdentityRole("User"));
         }
     }
 }
