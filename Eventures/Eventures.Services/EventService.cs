@@ -1,6 +1,7 @@
 ﻿namespace Eventures.Services
 {
     using System;
+    using System.Linq;
     using Data;
     using Interfaces;
     using Models;
@@ -14,7 +15,7 @@
             this.context = context;
         }
 
-        public Event CreateEvent(string name, string place, DateTime start, DateTime end, int totalTickets, decimal pricePerTicket)
+        public void CreateEvent(string name, string place, DateTime start, DateTime end, int totalTickets, decimal pricePerTicket)
         {
             var @event = new Event
             {
@@ -28,8 +29,13 @@
 
             this.context.Events.Add(@event);
             this.context.SaveChanges();
+        }
 
-            return @event;
+        public Event[] GetAllEvents()
+        {
+            var events = this.context.Events.ToArray();
+
+            return events;
         }
     }
 }

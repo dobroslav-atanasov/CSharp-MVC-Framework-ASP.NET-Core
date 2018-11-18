@@ -5,6 +5,8 @@
 
     public interface IEventsService
     {
-        Event CreateEvent(string name, string place, DateTime start, DateTime end, int totalTickets, decimal pricePerTicket);
+        void CreateEvent(string name, string place, DateTime start, DateTime end, int totalTickets, decimal pricePerTicket);
+
+        Event[] GetAllEvents();
     }
 }
