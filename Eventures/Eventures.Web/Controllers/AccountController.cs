@@ -1,23 +1,16 @@
 ﻿namespace Eventures.Web.Controllers
 {
-    using System.Linq;
-    using AutoMapper;
-    using Eventures.Models;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
     using ViewModels.Account;
 
     public class AccountController : Controller
     {
-        private readonly SignInManager<User> signInManager;
-        private readonly UserManager<User> userManager;
-        private readonly IMapper mapper;
+        private readonly IAccountService accountService;
 
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, IMapper mapper)
+        public AccountController(IAccountService accountService)
         {
-            this.signInManager = signInManager;
-            this.userManager = userManager;
-            this.mapper = mapper;
+            this.accountService = accountService;
         }
 
         public IActionResult Register()
@@ -28,29 +21,15 @@
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
-            var user = this.mapper.Map<User>(model);
-            var result = this.userManager.CreateAsync(user, model.Password).Result;
+            var isRegister = this.accountService.Register(model.Username, model.Password, model.ConfirmPassword, model.Email,
+                model.FirstName, model.LastName, model.UniqueCitizenNumber).GetAwaiter().GetResult();
 
-            if (this.userManager.Users.Count() == 1)
+            if (!isRegister)
             {
-                this.signInManager.UserManager.AddToRoleAsync(user, "Admin");
-                if (result.Succeeded)
-                {
-                    this.signInManager.SignInAsync(user, false).Wait();
-                    return this.RedirectToAction("Index", "Home");
-                }
-            }
-            else
-            {
-                this.signInManager.UserManager.AddToRoleAsync(user, "User");
-                if (result.Succeeded)
-                {
-                    this.signInManager.SignInAsync(user, false).Wait();
-                    return this.RedirectToAction("Index", "Home");
-                }
+                return this.View();
             }
 
-            return this.View();
+            return this.RedirectToAction("Index", "Home");
         }
 
         public IActionResult Login()
@@ -61,19 +40,19 @@
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
-            var user = this.userManager.Users.FirstOrDefault(u => u.UserName == model.Username);
-            var result = this.signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, true).Result;
-            if (result.Succeeded)
+            var isLogin = this.accountService.Login(model.Username, model.Password, model.RememberMe);
+
+            if (!isLogin)
             {
-                return this.RedirectToAction("Index", "Home");
+                return this.View();
             }
 
-            return this.View();
+            return this.RedirectToAction("Index", "Home");
         }
 
         public IActionResult Logout()
         {
-            this.signInManager.SignOutAsync();
+            this.accountService.Logout();
             return this.RedirectToAction("Index", "Home");
         }
     }

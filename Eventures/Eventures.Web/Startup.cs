@@ -40,12 +40,13 @@
             services.AddDbContext<EventuresDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<IEventsService, EventService>();
+            services.AddTransient<IAccountService, AccountService>();
+
             // Config mapper
             var mapperConfig = new MapperConfiguration(m => m.AddProfile(new MapperProfile()));
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
-
-            services.AddTransient<IEventsService, EventService>();
 
             services.Configure<IdentityOptions>(optinons =>
             {

@@ -11,16 +11,21 @@
             <li class="nav-item">
                 <a class="navbar-brand text-dark font-weight-bold" asp-controller="Home" asp-action="Index">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="navbar-brand text-dark font-weight-bold" asp-controller="Events" asp-action="All">All Events</a>
-            </li>
-            @if (User.IsInRole("Admin"))
-            {
-                <li class="nav-item">
-                    <a class="navbar-brand text-dark font-weight-bold" asp-controller="Events" asp-action="Create">Create Event</a>
-                </li>
-            }
         </ul>
+        <div class="collapse navbar-collapse d-flex justify-content-between dropdown font-weight-bold">
+            <a class="navbar-brand dropdown-toggle nav-link bg-info" data-toggle="dropdown">
+                Events
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-controller="Events" asp-action="All">All Events</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="dropdown-item" asp-controller="Events" asp-action="Create">Create Event</a>
+
+                }
+            </div>
+        </div>
+
         <ul class="navbar-nav left-side">
             @if (User.IsInRole("Admin"))
             {

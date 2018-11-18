@@ -1,10 +1,15 @@
-﻿
+﻿@model IEnumerable<Eventures.Web.ViewModels.Events.EventViewModel>
+
 @{
     ViewData["Title"] = "All";
 }
 
+@{
+    int index = 1;
+}
+
 <h1 class="text-center">All Events</h1>
-<hr class="hr-2 bg-dark" />
+<hr class="hr-2 bg-info" />
 <table class="table w-75 mx-auto table-hover">
     <thead>
         <tr class="row">
@@ -16,15 +21,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var order in @Model.AllOrders)
+        @foreach (var ev in @Model)
         {
             <tr class="row">
-                <th class="col-md-2">1</th>
-                <td class="col-md-4">@order.Id</td>
-                <td class="col-md-2">@order.Customer</td>
-                <td class="col-md-2">@order.Product</td>
-                <td class="col-md-2">@order.OrderedOn</td>
+                <th class="col-md-2">@index</th>
+                <td class="col-md-4">@ev.Name</td>
+                <td class="col-md-2">@ev.Start</td>
+                <td class="col-md-2">@ev.End</td>
+                <td class="col-md-2">@ev.Place</td>
             </tr>
+
+            index++;
         }
     </tbody>
 </table>
+<hr class="hr-2 bg-info" />

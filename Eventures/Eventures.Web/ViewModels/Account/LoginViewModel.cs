@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Eventures.Web.ViewModels.Account
+﻿namespace Eventures.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LoginViewModel
     {
         [Required]
@@ -15,7 +15,6 @@ namespace Eventures.Web.ViewModels.Account
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+        [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
     }
 }
