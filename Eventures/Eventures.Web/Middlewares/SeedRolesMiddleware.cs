@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
-    using Eventures.Models;
+    using Models;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;

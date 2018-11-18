@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Eventures.Web.ViewModels.Account
+﻿namespace Eventures.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class RegisterViewModel
     {
         [Required]

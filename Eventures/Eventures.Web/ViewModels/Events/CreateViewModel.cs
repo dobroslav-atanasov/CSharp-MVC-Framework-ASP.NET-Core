@@ -1,8 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Eventures.Web.ViewModels.Events
+﻿namespace Eventures.Web.ViewModels.Events
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class CreateViewModel
     {
         [Required]

@@ -9,12 +9,14 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Eventures.Data;
-    using Eventures.Models;
+    using Data;
+    using Models;
     using Services.Interfaces;
-    using Eventures.Services;
+    using Services;
     using AutoMapper;
-    using Eventures.Web.Mapper;
+    using Filters;
+    using Mapper;
+    using Microsoft.Extensions.Logging;
     using Middlewares.Extensions;
 
     public class Startup
@@ -65,10 +67,12 @@
                 .AddEntityFrameworkStores<EventuresDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<EventsLogActionFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -80,6 +84,10 @@
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+            loggerFactory.AddFile($"Logs/Events-{DateTime.UtcNow}.txt");
 
             // Middleware for seed roles
             app.UseSeedRoles();
