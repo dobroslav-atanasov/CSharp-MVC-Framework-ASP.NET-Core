@@ -87,7 +87,7 @@
 
             loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            loggerFactory.AddFile($"Logs/Events-{DateTime.UtcNow}.txt");
+            loggerFactory.AddFile($"Logs/Events.txt");
 
             // Middleware for seed roles
             app.UseSeedRoles();

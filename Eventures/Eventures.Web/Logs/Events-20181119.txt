@@ -1,0 +1,179 @@
+2018-11-19T18:41:30.1634978+02:00 0HLIE7NDGATTB:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2018-11-19T18:41:31.0060840+02:00 0HLIE7NDGATTB:00000001 [WRN] No type was specified for the decimal column '"PricePerTicket"' on entity type '"Event"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-19T18:41:31.1125505+02:00 0HLIE7NDGATTB:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:41:31.9787574+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:41:32.3424219+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("40"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[FirstName], [e].[LastName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UniqueCitizenNumber], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-11-19T18:41:32.7251185+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-19T18:41:32.8404325+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("22"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-19T18:41:32.8794649+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-19T18:41:32.9292153+02:00 0HLIE7NDGATTB:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-19T18:41:33.2618206+02:00 0HLIE7NDGATTB:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" (a44c0341)
+2018-11-19T18:41:33.3052355+02:00 0HLIE7NDGATTB:00000001 [INF] Executing action method "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:41:33.3199789+02:00 0HLIE7NDGATTB:00000001 [INF] Executed action method "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1.626ms. (50a9e262)
+2018-11-19T18:41:33.3593505+02:00 0HLIE7NDGATTB:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-19T18:41:33.6893378+02:00 0HLIE7NDGATTB:00000001 [INF] Executed ViewResult - view "Index" executed in 345.1803ms. (f66409e9)
+2018-11-19T18:41:33.6900468+02:00 0HLIE7NDGATTB:00000001 [INF] Executed action "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" in 427.3778ms (afa2e885)
+2018-11-19T18:41:33.7440413+02:00 0HLIE7NDGATTB:00000001 [INF] Request finished in 3587.4721ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-19T18:41:35.9958734+02:00 0HLIE7NDGATTB:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Events/Create   (ca22a1cb)
+2018-11-19T18:41:36.0002326+02:00 0HLIE7NDGATTB:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:41:36.0056445+02:00 0HLIE7NDGATTB:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:41:36.0330175+02:00 0HLIE7NDGATTB:00000002 [INF] Route matched with "{action = \"Create\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" (a44c0341)
+2018-11-19T18:41:36.0701284+02:00 0HLIE7NDGATTB:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:41:36.0738487+02:00 0HLIE7NDGATTB:00000002 [INF] Executing action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:41:36.0752476+02:00 0HLIE7NDGATTB:00000002 [INF] Executed action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.8179ms. (50a9e262)
+2018-11-19T18:41:36.0936608+02:00 0HLIE7NDGATTB:00000002 [INF] Executing ViewResult, running view "Create". (c83d0e25)
+2018-11-19T18:41:36.3365290+02:00 0HLIE7NDGATTB:00000002 [INF] Executed ViewResult - view "Create" executed in 260.5603ms. (f66409e9)
+2018-11-19T18:41:36.3370047+02:00 0HLIE7NDGATTB:00000002 [INF] Executed action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" in 303.7646ms (afa2e885)
+2018-11-19T18:41:36.3380212+02:00 0HLIE7NDGATTB:00000002 [INF] Request finished in 342.158ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-19T18:41:41.1996289+02:00 0HLIE7NDGATTB:00000003 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Events/Create application/x-www-form-urlencoded 293 (ca22a1cb)
+2018-11-19T18:41:41.2013790+02:00 0HLIE7NDGATTB:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:41:41.2060608+02:00 0HLIE7NDGATTB:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:41:41.2632275+02:00 0HLIE7NDGATTB:00000003 [INF] Route matched with "{action = \"Create\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" (a44c0341)
+2018-11-19T18:41:41.2643966+02:00 0HLIE7NDGATTB:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:41:41.4079563+02:00 0HLIE7NDGATTB:00000003 [INF] Executing action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" with arguments (["Eventures.Web.ViewModels.Events.CreateViewModel"]) - Validation state: Invalid (4e3479ed)
+2018-11-19T18:41:41.6419897+02:00 0HLIE7NDGATTB:00000003 [INF] Executed DbCommand ("9"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Decimal), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Events] ([End], [Name], [Place], [PricePerTicket], [Start], [TotalTickets])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2018-11-19T18:41:41.6625913+02:00 0HLIE7NDGATTB:00000003 [INF] Event created: fghfgh (8e30b076)
+2018-11-19T18:41:41.6630197+02:00 0HLIE7NDGATTB:00000003 [INF] Executed action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 254.8017ms. (50a9e262)
+2018-11-19T18:41:41.6657532+02:00 0HLIE7NDGATTB:00000003 [INF] [19.11.2018 г. 16:41:41] Administrator Dobri create event fghfgh (1.1.0001 г. 0:00:00 / 1.1.0001 г. 0:00:00). (46b1715f)
+2018-11-19T18:41:41.6755448+02:00 0HLIE7NDGATTB:00000003 [INF] Executing RedirectResult, redirecting to "/Events/All". (d98d540e)
+2018-11-19T18:41:41.6762530+02:00 0HLIE7NDGATTB:00000003 [INF] Executed action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" in 412.8428ms (afa2e885)
+2018-11-19T18:41:41.6796166+02:00 0HLIE7NDGATTB:00000003 [INF] Request finished in 480.1502ms 302  (791a596a)
+2018-11-19T18:41:41.6891467+02:00 0HLIE7NDGATTB:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Events/All   (ca22a1cb)
+2018-11-19T18:41:41.6903610+02:00 0HLIE7NDGATTB:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:41:41.6921066+02:00 0HLIE7NDGATTB:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:41:41.6988098+02:00 0HLIE7NDGATTB:00000004 [INF] Route matched with "{action = \"All\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" (a44c0341)
+2018-11-19T18:41:41.6992083+02:00 0HLIE7NDGATTB:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:41:41.6995541+02:00 0HLIE7NDGATTB:00000004 [INF] Executing action method "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:41:41.7259865+02:00 0HLIE7NDGATTB:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [e].[Id], [e].[End], [e].[Name], [e].[Place], [e].[PricePerTicket], [e].[Start], [e].[TotalTickets]
+FROM [Events] AS [e]" (0723d8ff)
+2018-11-19T18:41:41.8447479+02:00 0HLIE7NDGATTB:00000004 [INF] Executed action method "Eventures.Web.Controllers.EventsController.All (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 144.7511ms. (50a9e262)
+2018-11-19T18:41:41.8499857+02:00 0HLIE7NDGATTB:00000004 [INF] Executing ViewResult, running view "All". (c83d0e25)
+2018-11-19T18:41:41.8651446+02:00 0HLIE7NDGATTB:00000004 [INF] Executed ViewResult - view "All" executed in 19.9861ms. (f66409e9)
+2018-11-19T18:41:41.8654181+02:00 0HLIE7NDGATTB:00000004 [INF] Executed action "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" in 166.3543ms (afa2e885)
+2018-11-19T18:41:41.8659437+02:00 0HLIE7NDGATTB:00000004 [INF] Request finished in 176.942ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-19T18:44:03.9294207+02:00 0HLIE7ORFJ3VM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44390/   (ca22a1cb)
+2018-11-19T18:44:04.9132163+02:00 0HLIE7ORFJ3VM:00000001 [WRN] No type was specified for the decimal column '"PricePerTicket"' on entity type '"Event"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-19T18:44:05.0035606+02:00 0HLIE7ORFJ3VM:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:44:05.8151411+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executed DbCommand ("52"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:44:06.4104213+02:00 0HLIE7ORFJ3VM:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" (a44c0341)
+2018-11-19T18:44:06.4502856+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executing action method "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:44:06.4628799+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executed action method "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1.0602ms. (50a9e262)
+2018-11-19T18:44:06.5194648+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-19T18:44:06.8910066+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executed ViewResult - view "Index" executed in 392.7858ms. (f66409e9)
+2018-11-19T18:44:06.8919950+02:00 0HLIE7ORFJ3VM:00000001 [INF] Executed action "Eventures.Web.Controllers.HomeController.Index (Eventures.Web)" in 480.7459ms (afa2e885)
+2018-11-19T18:44:06.9251939+02:00 0HLIE7ORFJ3VM:00000001 [INF] Request finished in 3014.5015ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-19T18:44:10.2213495+02:00 0HLIE7ORFJ3VM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44390/Events/Create   (ca22a1cb)
+2018-11-19T18:44:10.2259564+02:00 0HLIE7ORFJ3VM:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:44:10.2341991+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:44:10.2620888+02:00 0HLIE7ORFJ3VM:00000002 [INF] Route matched with "{action = \"Create\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" (a44c0341)
+2018-11-19T18:44:10.3065077+02:00 0HLIE7ORFJ3VM:00000002 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:44:10.3107852+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executing action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:44:10.3118682+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executed action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.7371ms. (50a9e262)
+2018-11-19T18:44:10.3267357+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executing ViewResult, running view "Create". (c83d0e25)
+2018-11-19T18:44:10.5742470+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executed ViewResult - view "Create" executed in 261.5701ms. (f66409e9)
+2018-11-19T18:44:10.5754166+02:00 0HLIE7ORFJ3VM:00000002 [INF] Executed action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" in 313.076ms (afa2e885)
+2018-11-19T18:44:10.5764085+02:00 0HLIE7ORFJ3VM:00000002 [INF] Request finished in 355.0465ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-19T18:44:18.9468141+02:00 0HLIE7ORFJ3VM:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44390/Events/Create application/x-www-form-urlencoded 298 (ca22a1cb)
+2018-11-19T18:44:18.9489672+02:00 0HLIE7ORFJ3VM:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:44:18.9563625+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:44:19.0014870+02:00 0HLIE7ORFJ3VM:00000003 [INF] Route matched with "{action = \"Create\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" (a44c0341)
+2018-11-19T18:44:19.0028132+02:00 0HLIE7ORFJ3VM:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:44:19.2100791+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executing action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" with arguments (["Eventures.Web.ViewModels.Events.CreateViewModel"]) - Validation state: Invalid (4e3479ed)
+2018-11-19T18:44:19.5641100+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executed DbCommand ("54"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Decimal), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Events] ([End], [Name], [Place], [PricePerTicket], [Start], [TotalTickets])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2018-11-19T18:44:19.5879614+02:00 0HLIE7ORFJ3VM:00000003 [INF] Event created: Orange (fe6fbf41)
+2018-11-19T18:44:19.5886704+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executed action method "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 378.1696ms. (50a9e262)
+2018-11-19T18:44:19.5924897+02:00 0HLIE7ORFJ3VM:00000003 [INF] [19.11.2018 г. 16:44:19] Administrator Dobri create event Orange (1.1.0001 г. 0:00:00 / 1.1.0001 г. 0:00:00). (0d7a6d46)
+2018-11-19T18:44:19.6058876+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executing RedirectResult, redirecting to "/Events/All". (d98d540e)
+2018-11-19T18:44:19.6072897+02:00 0HLIE7ORFJ3VM:00000003 [INF] Executed action "Eventures.Web.Controllers.EventsController.Create (Eventures.Web)" in 605.1802ms (afa2e885)
+2018-11-19T18:44:19.6122915+02:00 0HLIE7ORFJ3VM:00000003 [INF] Request finished in 665.4924ms 302  (791a596a)
+2018-11-19T18:44:19.6272692+02:00 0HLIE7ORFJ3VM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44390/Events/All   (ca22a1cb)
+2018-11-19T18:44:19.6288737+02:00 0HLIE7ORFJ3VM:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"EventuresDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-11-19T18:44:19.6373731+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-19T18:44:19.6450866+02:00 0HLIE7ORFJ3VM:00000004 [INF] Route matched with "{action = \"All\", controller = \"Events\", page = \"\", area = \"\"}". Executing action "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" (a44c0341)
+2018-11-19T18:44:19.6454673+02:00 0HLIE7ORFJ3VM:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-19T18:44:19.6458144+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executing action method "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" - Validation state: Valid (dad538d7)
+2018-11-19T18:44:19.6830338+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [e].[Id], [e].[End], [e].[Name], [e].[Place], [e].[PricePerTicket], [e].[Start], [e].[TotalTickets]
+FROM [Events] AS [e]" (0723d8ff)
+2018-11-19T18:44:19.7873451+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executed action method "Eventures.Web.Controllers.EventsController.All (Eventures.Web)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 141.254ms. (50a9e262)
+2018-11-19T18:44:19.7937556+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executing ViewResult, running view "All". (c83d0e25)
+2018-11-19T18:44:19.8087082+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executed ViewResult - view "All" executed in 20.8754ms. (f66409e9)
+2018-11-19T18:44:19.8089827+02:00 0HLIE7ORFJ3VM:00000004 [INF] Executed action "Eventures.Web.Controllers.EventsController.All (Eventures.Web)" in 163.5721ms (afa2e885)
+2018-11-19T18:44:19.8092500+02:00 0HLIE7ORFJ3VM:00000004 [INF] Request finished in 182.0799ms 200 text/html; charset=utf-8 (791a596a)
