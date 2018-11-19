@@ -34,12 +34,17 @@
         [Authorize(Roles = "Admin")]
         public IActionResult Create(CreateViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
             this.eventsService.CreateEvent(model.Name, model.Place, model.Start, model.End, model.TotalTickets, model.PricePerTicket);
             this.logger.LogInformation($"Event created: {model.Name}", model);
             return this.RedirectToAction("All", "Events");
         }
 
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         public IActionResult All()
         {
             var events = this.eventsService.GetAllEvents();

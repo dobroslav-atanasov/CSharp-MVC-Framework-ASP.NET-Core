@@ -21,6 +21,11 @@
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
             var isRegister = this.accountService.Register(model.Username, model.Password, model.ConfirmPassword, model.Email,
                 model.FirstName, model.LastName, model.UniqueCitizenNumber).GetAwaiter().GetResult();
 
@@ -40,6 +45,11 @@
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
             var isLogin = this.accountService.Login(model.Username, model.Password, model.RememberMe);
 
             if (!isLogin)
