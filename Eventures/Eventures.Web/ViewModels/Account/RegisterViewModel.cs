@@ -6,6 +6,8 @@
     {
         [Required]
         [DataType(DataType.Text)]
+        [MinLength(3, ErrorMessage = "The {0} must be at least {1} characters long.")]
+        [RegularExpression("[a-zA-Z0-9-_.*~]+")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
@@ -15,7 +17,7 @@
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(10, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -38,6 +40,7 @@
 
         [Required]
         [DataType(DataType.Text)]
+        [StringLength(10, ErrorMessage = "UCN must be exactly {1} characters long.", MinimumLength = 10)]
         [Display(Name = "UCN")]
         public string UniqueCitizenNumber { get; set; }
     }
