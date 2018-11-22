@@ -51,5 +51,11 @@
             var eventViewModels = this.mapper.Map<Event[], IEnumerable<EventViewModel>>(events);
             return this.View(eventViewModels);
         }
+
+        [Authorize]
+        public IActionResult MyEvent()
+        {
+            return this.View();
+        }
     }
 }
