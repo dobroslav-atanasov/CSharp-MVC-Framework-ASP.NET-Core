@@ -38,7 +38,7 @@
 
             // Services for Database
             services.AddDbContext<EventuresDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IEventsService, EventService>();
             services.AddTransient<IAccountService, AccountService>();
