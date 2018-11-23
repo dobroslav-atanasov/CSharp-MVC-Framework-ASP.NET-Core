@@ -2,9 +2,10 @@
 {
     using System.Globalization;
     using AutoMapper;
-    using Eventures.Models;
+    using Models;
     using ViewModels.Account;
     using ViewModels.Events;
+    using ViewModels.Orders;
 
     public class MapperProfile : Profile
     {
@@ -19,6 +20,14 @@
                     e => e.MapFrom(s => s.Start.ToString("dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture)))
                 .ForMember(evm => evm.End,
                     e => e.MapFrom(s => s.End.ToString("dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture)));
+
+            this.CreateMap<Order, MyOrderViewModel>()
+                .ForMember(o => o.Start,
+                    e => e.MapFrom(s => s.Event.Start.ToString("dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture)))
+                .ForMember(o => o.End,
+                    e => e.MapFrom(s => s.Event.End.ToString("dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture)))
+                .ForMember(o => o.Tickets,
+                    e => e.MapFrom(s => s.TicketsCount));
         }
     }
 }
