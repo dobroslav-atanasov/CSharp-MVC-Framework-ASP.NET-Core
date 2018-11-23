@@ -42,6 +42,7 @@
 
             services.AddTransient<IEventsService, EventService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IOrdersService, OrdersService>();
 
             // Config mapper
             var mapperConfig = new MapperConfiguration(m => m.AddProfile(new MapperProfile()));

@@ -18,7 +18,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" asp-controller="Events" asp-action="All">All Events</a>
-                <a class="dropdown-item" asp-controller="Events" asp-action="MyEvent">My Events</a>
+                <a class="dropdown-item" asp-controller="Events" asp-action="MyEvents">My Events</a>
                 @if (User.IsInRole("Admin"))
                 {
                     <a class="dropdown-item" asp-controller="Events" asp-action="Create">Create Event</a>

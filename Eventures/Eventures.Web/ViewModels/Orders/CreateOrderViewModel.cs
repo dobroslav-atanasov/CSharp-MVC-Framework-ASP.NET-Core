@@ -1,16 +1,16 @@
 ﻿namespace Eventures.Web.ViewModels.Orders
 {
-    using System;
-    using Models;
-
+    using System.ComponentModel.DataAnnotations;
+    
     public class CreateOrderViewModel
     {
-        public DateTime OrderedOn { get; set; }
-
         public int EventId { get; set; }
 
-        public User Customer { get; set; }
+        public string CustomerName { get; set; }
 
+        [Required]
+        [Range(1, int.MaxValue)]
+        [Display(Name = "Tickets")]
         public int Tickets { get; set; }
     }
 }
