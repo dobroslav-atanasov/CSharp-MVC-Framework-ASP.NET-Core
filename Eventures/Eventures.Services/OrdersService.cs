@@ -1,9 +1,10 @@
 ﻿namespace Eventures.Services
 {
     using System;
+    using System.Linq;
     using Data;
     using Interfaces;
-    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using Models;
 
     public class OrdersService : IOrdersService
@@ -31,6 +32,17 @@
 
             this.context.Orders.Add(order);
             this.context.SaveChanges();
+        }
+
+        public Order[] GetMyEvents(string userId)
+        {
+            var orders = this.context
+                .Orders
+                .Where(o => o.CustomerId == userId)
+                .Include(o => o.Event)
+                .ToArray();
+
+            return orders;
         }
     }
 }
