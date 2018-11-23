@@ -71,8 +71,16 @@
         public IActionResult MyEvents()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var orders = this.ordersService.GetMyEvents(userId);
+            var orders = this.ordersService.GetMyOrders(userId);
             var ordersViewModel = this.mapper.Map<Order[], IEnumerable<MyOrderViewModel>>(orders);
+            return this.View(ordersViewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult AllOrders()
+        {
+            var orders = this.ordersService.GetAllOrders();
+            var ordersViewModel = this.mapper.Map<Order[], IEnumerable<AllOrdersViewModel>>(orders);
             return this.View(ordersViewModel);
         }
     }
