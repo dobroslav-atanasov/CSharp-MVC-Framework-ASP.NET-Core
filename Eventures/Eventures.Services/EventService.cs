@@ -37,5 +37,12 @@
 
             return events;
         }
+
+        public Event GetEventById(int id)
+        {
+            var @event = this.context.Events.Find(id);
+
+            return @event;
+        }
     }
 }
