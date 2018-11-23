@@ -6,6 +6,8 @@
     {
         void OrderTickets(int eventId, string username, int tickets);
 
-        Order[] GetMyEvents(string userId);
+        Order[] GetMyOrders(string userId);
+
+        Order[] GetAllOrders();
     }
 }

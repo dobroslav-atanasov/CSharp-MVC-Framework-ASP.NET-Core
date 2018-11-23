@@ -34,12 +34,23 @@
             this.context.SaveChanges();
         }
 
-        public Order[] GetMyEvents(string userId)
+        public Order[] GetMyOrders(string userId)
         {
             var orders = this.context
                 .Orders
                 .Where(o => o.CustomerId == userId)
                 .Include(o => o.Event)
+                .ToArray();
+
+            return orders;
+        }
+
+        public Order[] GetAllOrders()
+        {
+            var orders = this.context
+                .Orders
+                .Include(o => o.Event)
+                .Include(o => o.Customer)
                 .ToArray();
 
             return orders;
