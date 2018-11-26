@@ -17,21 +17,25 @@
         <input asp-for="Password" class="form-control" placeholder="Password..." />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <hr class="hr-1 bg-info half-width" />
     <div class="checkbox text-center">
         <label asp-for="RememberMe">
             <input asp-for="RememberMe" />
             @Html.DisplayNameFor(m => m.RememberMe)
         </label>
     </div>
-    <hr class="hr-1 bg-info half-width" />
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn bg-info">Login</button>
     </div>
 </form>
+<br />
 <div class="text-center">
     <a asp-controller="Account" asp-action="Register" class="text-info">Forgot your password?</a>
 </div>
 <div class="text-center">
     <a asp-controller="Account" asp-action="Register" class="text-info">Register as a new user</a>
 </div>
+<hr class="hr-1 bg-info half-width" />
+<div class="text-center">
+    <a asp-controller="Account" asp-action="Register" class="btn btn-info text-dark">Facebook</a>
+</div>
+<hr class="hr-1 bg-info half-width" />
