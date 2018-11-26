@@ -62,6 +62,11 @@
         [HttpPost]
         public IActionResult OrderTickets(CreateOrderViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("All", "Events", model);
+            }
+
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             this.ordersService.OrderTickets(model.EventId, userId, model.Tickets);
             return this.RedirectToAction("Index", "Home");

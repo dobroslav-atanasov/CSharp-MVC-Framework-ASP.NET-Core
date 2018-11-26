@@ -10,38 +10,36 @@
 <hr class="hr-2 bg-info" />
 <table class="table w-75 mx-auto table-hover">
     <thead>
-    <tr class="row">
-        <th class="col-md-1">#</th>
-        <th class="col-md-3">Name</th>
-        <th class="col-md-2">Start</th>
-        <th class="col-md-2">End</th>
-        <th class="col-md-4">Actions</th>
-    </tr>
+        <tr class="row">
+            <th class="col-md-1">#</th>
+            <th class="col-md-3">Name</th>
+            <th class="col-md-2">Start</th>
+            <th class="col-md-2">End</th>
+            <th class="col-md-4">Actions</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var ev in this.ViewData["Events"] as IEnumerable<EventViewModel>)
-    {
-        <tr class="row">
-            <th class="col-md-1">@index</th>
-            <td class="col-md-3">@ev.Name</td>
-            <td class="col-md-2">@ev.Start</td>
-            <td class="col-md-2">@ev.End</td>
-            <td>
-                <form method="post" asp-action="OrderTickets">
-                    <div>
+        @foreach (var ev in this.ViewData["Events"] as IEnumerable<EventViewModel>)
+        {
+            <tr class="row">
+                <th class="col-md-1">@index</th>
+                <td class="col-md-3">@ev.Name</td>
+                <td class="col-md-2">@ev.Start</td>
+                <td class="col-md-2">@ev.End</td>
+                <td class="col-md-4">
+                    <form method="post" asp-action="OrderTickets">
                         <input type="hidden" asp-for="@Model.EventId" value="@ev.Id" />
                         <input type="hidden" asp-for="@Model.CustomerName" value="@User.Identity.Name" />
                         <label asp-for="@Model.Tickets"></label>
                         <input asp-for="@Model.Tickets" class="form-control" />
                         <span asp-validation-for="@Model.Tickets" class="text-danger"></span>
                         <button type="submit" class="btn bg-info">Order</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
+                    </form>
+                </td>
+            </tr>
 
-        index++;
-    }
+            index++;
+        }
     </tbody>
 </table>
 <hr class="hr-2 bg-info" />
