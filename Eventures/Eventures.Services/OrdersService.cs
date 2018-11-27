@@ -30,6 +30,8 @@
                 TicketsCount = tickets
             };
 
+            @event.TotalTickets -= tickets;
+
             this.context.Orders.Add(order);
             this.context.SaveChanges();
         }

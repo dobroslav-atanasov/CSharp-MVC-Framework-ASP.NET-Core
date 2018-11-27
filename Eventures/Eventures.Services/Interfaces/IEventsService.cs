@@ -10,5 +10,7 @@
         Event[] GetAllEvents();
 
         Event GetEventById(int id);
+
+        int GetTotalTicketsByEvent(int id);
     }
 }

@@ -33,7 +33,10 @@
 
         public Event[] GetAllEvents()
         {
-            var events = this.context.Events.ToArray();
+            var events = this.context
+                .Events
+                .Where(e => e.TotalTickets != 0)
+                .ToArray();
 
             return events;
         }
@@ -43,6 +46,15 @@
             var @event = this.context.Events.Find(id);
 
             return @event;
+        }
+
+        public int GetTotalTicketsByEvent(int id)
+        {
+            var @event = this.context
+                .Events
+                .FirstOrDefault(e => e.Id == id);
+
+            return @event.TotalTickets;
         }
     }
 }
