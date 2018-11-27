@@ -27,13 +27,19 @@
                 <td class="col-md-2">@ev.Start</td>
                 <td class="col-md-2">@ev.End</td>
                 <td class="col-md-4">
-                    <form method="post" asp-action="OrderTickets">
-                        <input type="hidden" asp-for="@Model.EventId" value="@ev.Id" />
-                        <input type="hidden" asp-for="@Model.CustomerName" value="@User.Identity.Name" />
-                        <label asp-for="@Model.Tickets"></label>
-                        <input asp-for="@Model.Tickets" class="form-control" />
+                    <form asp-controller="Orders" asp-action="OrderTickets" method="post" class="form-inline">
+                        <div class="col-md-3">
+                            <input type="hidden" asp-for="@Model.EventId" value="@ev.Id" />
+                            <input type="hidden" asp-for="@Model.CustomerName" value="@User.Identity.Name" />
+                            <label asp-for="@Model.Tickets"></label>
+                        </div>
+                        <div class="col-md-7">
+                            <input asp-for="@Model.Tickets" class="form-control" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn bg-info">Order</button>
+                        </div>
                         <span asp-validation-for="@Model.Tickets" class="text-danger"></span>
-                        <button type="submit" class="btn bg-info">Order</button>
                     </form>
                 </td>
             </tr>
