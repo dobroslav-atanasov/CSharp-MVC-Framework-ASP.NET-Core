@@ -9,7 +9,7 @@
         public string CustomerName { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue)]
+        [Range(1, 1000)]
         [Display(Name = "Tickets")]
         public int Tickets { get; set; }
     }

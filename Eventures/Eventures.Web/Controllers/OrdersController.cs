@@ -13,11 +13,13 @@
     {
         private readonly IOrdersService ordersService;
         private readonly IMapper mapper;
+        private readonly IEventsService eventsService;
 
-        public OrdersController(IOrdersService ordersService, IMapper mapper)
+        public OrdersController(IOrdersService ordersService, IMapper mapper, IEventsService eventsService)
         {
             this.ordersService = ordersService;
             this.mapper = mapper;
+            this.eventsService = eventsService;
         }
         
         [Authorize]
@@ -26,6 +28,13 @@
         {
             if (!this.ModelState.IsValid)
             {
+                return this.RedirectToAction("All", "Events", model);
+            }
+
+            var totalTickets = this.eventsService.GetTotalTicketsByEvent(model.EventId);
+            if (totalTickets < model.Tickets)
+            {
+                this.ViewData["Error"] = "There are not enough tickets!";
                 return this.RedirectToAction("All", "Events", model);
             }
 
