@@ -12,7 +12,6 @@
     using ViewModels.Events;
     using ViewModels.Orders;
 
-
     public class EventsController : Controller
     {
         private readonly IEventsService eventsService;
@@ -59,33 +58,11 @@
         }
         
         [Authorize]
-        [HttpPost]
-        public IActionResult OrderTickets(CreateOrderViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.RedirectToAction("All", "Events", model);
-            }
-
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            this.ordersService.OrderTickets(model.EventId, userId, model.Tickets);
-            return this.RedirectToAction("Index", "Home");
-        }
-
-        [Authorize]
         public IActionResult MyEvents()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var orders = this.ordersService.GetMyOrders(userId);
             var ordersViewModel = this.mapper.Map<Order[], IEnumerable<MyOrderViewModel>>(orders);
-            return this.View(ordersViewModel);
-        }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult AllOrders()
-        {
-            var orders = this.ordersService.GetAllOrders();
-            var ordersViewModel = this.mapper.Map<Order[], IEnumerable<AllOrdersViewModel>>(orders);
             return this.View(ordersViewModel);
         }
     }
