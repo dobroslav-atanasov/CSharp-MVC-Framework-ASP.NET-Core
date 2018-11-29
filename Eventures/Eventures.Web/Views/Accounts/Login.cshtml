@@ -1,4 +1,8 @@
-﻿@model Eventures.Web.ViewModels.Account.LoginViewModel
+﻿@using Microsoft.AspNetCore.Authentication
+
+@model Eventures.Web.ViewModels.Accounts.LoginViewModel
+
+@inject IAuthenticationSchemeProvider SchemeProvider
 
 @{
     ViewData["Title"] = "Login";
@@ -29,13 +33,20 @@
 </form>
 <br />
 <div class="text-center">
-    <a asp-controller="Account" asp-action="Register" class="text-info">Forgot your password?</a>
+    <a asp-controller="Accounts" asp-action="Register" class="text-info">Forgot your password?</a>
 </div>
 <div class="text-center">
-    <a asp-controller="Account" asp-action="Register" class="text-info">Register as a new user</a>
+    <a asp-controller="Accounts" asp-action="Register" class="text-info">Register as a new user</a>
 </div>
 <hr class="hr-1 bg-info half-width" />
-<div class="text-center">
-    <a asp-controller="Account" asp-action="Register" class="btn btn-info text-dark">Facebook</a>
-</div>
+<form asp-action="ExternalLogin" method="post" class="form-horizontal text-center">
+    <div>
+        <p>
+            @foreach (var provider in await SchemeProvider.GetRequestHandlerSchemesAsync())
+            {
+                <button type="submit" class="btn btn-info text-dark" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+            }
+        </p>
+    </div>
+</form>
 <hr class="hr-1 bg-info half-width" />

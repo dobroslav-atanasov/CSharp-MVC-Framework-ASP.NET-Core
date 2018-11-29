@@ -1,0 +1,16 @@
+﻿<div class="collapse navbar-collapse d-flex dropdown font-weight-bold left-side">
+    <a class="navbar-brand dropdown-toggle nav-link bg-info" data-toggle="dropdown">
+        Orders
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" asp-controller="Orders" asp-action="AllOrders">All Orders</a>
+    </div>
+    <div class="collapse navbar-collapse d-flex dropdown font-weight-bold left-side">
+        <a class="navbar-brand dropdown-toggle nav-link bg-info " data-toggle="dropdown">
+            Administration
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-controller="Accounts" asp-action="AllUsers">Change User Role</a>
+        </div>
+    </div>
+</div>

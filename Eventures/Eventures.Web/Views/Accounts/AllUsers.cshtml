@@ -1,0 +1,54 @@
+﻿@using Eventures.Models
+@using Eventures.Web.ViewModels.Accounts
+@using Microsoft.AspNetCore.Identity
+
+@model Eventures.Web.ViewModels.Accounts.UserIdViewModel
+
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "All Users";
+    var index = 1;
+}
+
+<h1 class="text-center">All Users</h1>
+<hr class="hr-2 bg-info" />
+<table class="table w-75 mx-auto table-hover">
+    <thead>
+        <tr class="row">
+            <th class="col-md-1">#</th>
+            <th class="col-md-5">Name</th>
+            <th class="col-md-6 text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in this.ViewData["Users"] as IEnumerable<UserViewModel>)
+        {
+            <tr class="row">
+                <th class="col-md-1">@index</th>
+                <td class="col-md-5">@user.Username</td>
+                <td class="col-md-6">
+                    <div class="form-inline text-center justify-content-around">
+                        @if (await this.UserManager.IsInRoleAsync(this.UserManager.Users.FirstOrDefault(u => u.UserName == user.Username), "Admin"))
+                        {
+                            <form asp-controller="Accounts" asp-action="DemoteUser" method="post" class="form-horizontal text-center">
+                                <input type="hidden" asp-for="Id" value="@user.Id" />
+                                <button type="submit" class="btn btn-info text-dark" value="Demote">Demote</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="Accounts" asp-action="PromoteUser" method="post" class="form-horizontal text-center">
+                                <input type="hidden" asp-for="Id" value="@user.Id" />
+                                <button type="submit" class="btn btn-info text-dark" value="Promote">Promote</button>
+                            </form>
+                        }
+                    </div>
+                </td>
+
+            </tr>
+
+            index++;
+        }
+    </tbody>
+</table>
+<hr class="hr-2 bg-info" />
