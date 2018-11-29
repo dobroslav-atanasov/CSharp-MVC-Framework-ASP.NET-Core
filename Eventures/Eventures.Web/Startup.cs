@@ -41,7 +41,7 @@
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IEventsService, EventService>();
-            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IAccountsService, AccountsService>();
             services.AddTransient<IOrdersService, OrdersService>();
 
             // Config mapper
