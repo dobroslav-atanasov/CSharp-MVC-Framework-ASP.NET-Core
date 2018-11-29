@@ -3,7 +3,7 @@
     using System.Globalization;
     using AutoMapper;
     using Models;
-    using ViewModels.Account;
+    using ViewModels.Accounts;
     using ViewModels.Events;
     using ViewModels.Orders;
 
@@ -36,6 +36,10 @@
                     e => e.MapFrom(s => s.Customer.UserName))
                 .ForMember(o => o.OrderedOn,
                     e => e.MapFrom(s => s.OrderedOn.ToString("dd-MMM-yy HH:mm:ss", CultureInfo.InvariantCulture)));
+
+            this.CreateMap<User, UserViewModel>()
+                .ForMember(uvm => uvm.Id, x => x.MapFrom(u => u.Id))
+                .ForMember(uvm => uvm.Username, x => x.MapFrom(u => u.UserName));
         }
     }
 }
