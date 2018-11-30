@@ -1,4 +1,7 @@
-﻿@using Eventures.Web.ViewModels.Events
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using X.PagedList.Mvc.Common
+
 @model Eventures.Web.ViewModels.Orders.CreateOrderViewModel
 
 @{
@@ -19,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var ev in this.ViewData["Events"] as IEnumerable<EventViewModel>)
+        @foreach (var ev in this.ViewBag.ViewModels)
         {
             <tr class="row">
                 <th class="col-md-1">@index</th>
@@ -39,7 +42,6 @@
                         <div class="col-md-2">
                             <button type="submit" class="btn bg-info">Order</button>
                         </div>
-
                         <span asp-validation-for="@Model.Tickets" class="text-danger"></span>
                     </form>
                 </td>
@@ -49,4 +51,13 @@
         }
     </tbody>
 </table>
+<div class="text-center">
+    @Html.PagedListPager((IPagedList)ViewBag.ViewModels, page => Url.Action("All", new { page = page }),
+        new PagedListRenderOptions
+        {
+            UlElementClasses = new string[] { "pagination", "justify-content-center" },
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" },
+        })
+</div>
 <hr class="hr-2 bg-info" />
