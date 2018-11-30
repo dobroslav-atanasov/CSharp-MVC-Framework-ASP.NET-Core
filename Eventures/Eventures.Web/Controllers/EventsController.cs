@@ -63,7 +63,7 @@
             }
 
             var pageNumber = page ?? 1;
-            var itemsOnPage = viewModels.ToPagedList(pageNumber, 1);
+            var itemsOnPage = viewModels.ToPagedList(pageNumber, 5);
 
             this.ViewBag.ViewModels = itemsOnPage;
 
