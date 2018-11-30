@@ -1,6 +1,7 @@
 ﻿namespace Eventures.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Security.Claims;
     using AutoMapper;
     using Filters;
@@ -11,6 +12,7 @@
     using Services.Interfaces;
     using ViewModels.Events;
     using ViewModels.Orders;
+    using X.PagedList;
 
     public class EventsController : Controller
     {
@@ -49,11 +51,22 @@
         }
 
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(int? page)
         {
-            var events = this.eventsService.GetAllEvents();
-            var eventViewModels = this.mapper.Map<Event[], IEnumerable<EventViewModel>>(events);
-            this.ViewData["Events"] = eventViewModels;
+            var events = this.eventsService.GetAllEvents().OrderBy(x => x.Name);
+
+            var viewModels = new List<EventViewModel>();
+            foreach (var @event in events)
+            {
+                var viewModel = this.mapper.Map<EventViewModel>(@event);
+                viewModels.Add(viewModel);
+            }
+
+            var pageNumber = page ?? 1;
+            var itemsOnPage = viewModels.ToPagedList(pageNumber, 1);
+
+            this.ViewBag.ViewModels = itemsOnPage;
+
             return this.View();
         }
         
