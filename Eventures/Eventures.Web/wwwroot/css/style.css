@@ -48,6 +48,27 @@ footer {
     text-align: center;
 }
 
+.pagination > li > a {
+    background-color: white;
+    color: #17a2b8;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    color: #17a2b8;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
 /*.product {*/
 	/*word-wrap: break-word;*/
 /*}*/
