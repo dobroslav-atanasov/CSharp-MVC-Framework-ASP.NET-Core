@@ -1,15 +1,14 @@
-﻿@model Eventures.Web.ViewModels.Accounts.ExternalLoginViewModel
-
+﻿@model Eventures.Web.ViewModels.Accounts.ExternalLoginConfirmationViewModel
 @{
     ViewData["Title"] = "Register";
 }
 
 <h2 class="text-center">@ViewData["Title"]</h2>
 
-<hr class="hr-1 bg-info half-width" />
+<hr class="hr-2 bg-secondary half-width" />
 <h4 class="text-center">Associate your @ViewData["LoginProvider"] account.</h4>
 
-<hr class="hr-1 bg-info half-width" />
+<hr class="hr-2 bg-secondary half-width" />
 
 <form class="mx-auto half-width" asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -30,8 +29,8 @@
         </div>
     </div>
     <div class="button-holder d-flex justify-content-center">
-        <button type="submit" class="btn btn-info">Register</button>
+        <button type="submit" class="btn eventures-bg-color">Register</button>
     </div>
 </form>
 
-<hr class="hr-1 bg-info half-width" />
+<hr class="hr-2 bg-secondary half-width" />
